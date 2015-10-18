@@ -17,20 +17,4 @@ public class StatistiquesServiceImpl implements StatistiquesService{
 	@Autowired
 	ClazzDao clazzDao;
 	
-	@Override
-	public List<Clazz> listFiveClassesMostPlayed() {
-		List<Clazz> classes = clazzDao.list(Clazz.class);
-		List<Integer> nbUses = new ArrayList<Integer>();
-		//Récupération du nombre d'utilisation de chaque classe
-		for(int i=0; i<classes.size(); i++){
-			nbUses.set(i, classes.get(i).getUsers().size());
-		}
-		
-		List<Integer> fiveClassMostPlayed() = new ArrayList<Integer>;
-		
-		return null;
-	}
-
-
-	
 }
