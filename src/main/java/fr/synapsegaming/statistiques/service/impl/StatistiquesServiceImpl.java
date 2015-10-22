@@ -15,7 +15,6 @@ import fr.synapsegaming.user.dao.RaceDao;
 import fr.synapsegaming.user.dao.UserDao;
 import fr.synapsegaming.user.entity.Clazz;
 import fr.synapsegaming.user.entity.Race;
-
 @Service("StatistiquesService")
 public class StatistiquesServiceImpl implements StatistiquesService{
 
