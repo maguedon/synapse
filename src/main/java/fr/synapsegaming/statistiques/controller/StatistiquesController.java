@@ -1,6 +1,5 @@
 package fr.synapsegaming.statistiques.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import fr.synapsegaming.commons.controller.AbstractController;
 import fr.synapsegaming.media.service.ArticleService;
+import fr.synapsegaming.statistiques.service.StatistiquesService;
 import fr.synapsegaming.ui.service.ResourceService;
 
 
@@ -29,6 +29,9 @@ public class StatistiquesController extends AbstractController {
 	
 	@Autowired
 	ArticleService articleService;
+	
+	@Autowired
+	StatistiquesService statistiquesService;
    
     /**
      * The default constructor to initialize the page
@@ -43,6 +46,9 @@ public class StatistiquesController extends AbstractController {
         page.setViewName("Statistiques");
         page.addObject("resources", resourceService.listMainMenu());
         page.addObject("proms", articleService.getFiveLastProms());
+        page.addObject("fiveClassesMostPlayed", statistiquesService.listFiveClassesMostPlayed());
+        page.addObject("fiveRacesMostPlayed", statistiquesService.listFiveRacesMostPlayed());
+   
         if (user != null)
             page.addObject("userResources", resourceService.listUserResources(user.getGroup().getId()));
         return page;

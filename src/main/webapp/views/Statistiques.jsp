@@ -6,6 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -44,7 +45,21 @@
 	<div id="stat-wrapper">
 		<div id="stat-container">
 			<div id="stat">
+				<h3>Top 5 des classes les plus utilisées</h3>
+				<div>
+					<c:forEach items="${fiveClassesMostPlayed}" var="clazz">
+							<div>${clazz.name}</div>
+							<div>${clazz.nbUsers}</div>
+					</c:forEach>
+				</div>
 				
+				<h3>Top 5 des races les plus utilisées</h3>
+				<div>
+					<c:forEach items="${fiveRacesMostPlayed}" var="race">
+							<div>${race.name}</div>
+							<div>${race.nbUsers}</div>
+					</c:forEach>
+				</div>
 			</div>
 		</div>
 	</div>

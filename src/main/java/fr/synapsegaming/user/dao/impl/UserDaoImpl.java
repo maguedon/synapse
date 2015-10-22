@@ -48,5 +48,25 @@ public class UserDaoImpl extends AbstractDao<User, Long> implements UserDao {
             session.close();
         }
     }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<User> listUsersForClass(long idClass) {
+        Session session = this.getSession();
+        try {
+            Query query = session
+                    .createQuery("from User u join fetch u.class c where c.id = :idClass");
+            query.setParameter("idClass", idClass);
+            return query.list();
+        } catch (Exception e) {
+            LOGGER.warn(e);
+            return Collections.emptyList();
+        } finally {
+            session.close();
+        }
+    }
 
 }

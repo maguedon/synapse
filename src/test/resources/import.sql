@@ -25,10 +25,12 @@ INSERT INTO classes (name, img) VALUES('Chaman', '/resources/img/classes/shaman.
 INSERT INTO classes (name, img) VALUES('Chasseur', '/resources/img/classes/hunt.png');
 INSERT INTO classes (name, img) VALUES('Chevalier de la mort', '/resources/img/classes/dk.png');
 INSERT INTO classes (name, img) VALUES('Démoniste', '/resources/img/classes/warlock.png');
+INSERT INTO classes (name, img) VALUES('Guerrier', '/resources/img/classes/war.png');
 -- Race Insertion
 INSERT INTO races (name) VALUES('Elfe de sang');
 INSERT INTO races (name) VALUES('Gobelin');
 INSERT INTO races (name) VALUES('Mort vivant');
+INSERT INTO races (name) VALUES('Orc');
 -- Clazz binding to a Race
 INSERT INTO races_classes (id_race, id_class) VALUES(1, 2);
 INSERT INTO races_classes (id_race, id_class) VALUES(1, 3);
@@ -79,9 +81,9 @@ INSERT INTO groups (name) VALUES('Administrator');
 INSERT INTO realms (name) VALUES('Krasus');
 -- User Insertion
 INSERT INTO users (name, surname, birth, mail, password, nickname, id_race, id_class, id_spec, active, legals, id_group, id_realm, avatar_forum) VALUES('Airouche', 'Meidi', '1988-11-13', 'meidi.airouche@gmail.com', 'uNnXXu939f00JTSF/3CG0A==', 'Squash', 1, 1, 1, 1, 1, 1, 1, '/resources/img/default_avatar.png');
-INSERT INTO users (name, surname, birth, mail, password, nickname, id_race, id_class, id_spec, active, legals, id_group, id_realm, avatar_forum) VALUES('Airouche', 'Meidi', '1988-11-13', 'mednnet@wanadoo.fr', 'uNnXXu939f00JTSF/3CG0A==', 'XtremZ', 1, 1, 1, 1, 1, 1, 1, '/resources/img/default_avatar.png');
-INSERT INTO users (name, surname, birth, mail, password, nickname, id_race, id_class, id_spec, active, legals, id_group, id_realm, avatar_forum) VALUES('Airouche', 'Meidi', '1988-11-13', 'inactive@test.fr', 'uNnXXu939f00JTSF/3CG0A==', 'Inactive', 1, 1, 1, 1, 1, 1, 1, '/resources/img/default_avatar.png');
-INSERT INTO users (name, surname, birth, mail, password, nickname, id_race, id_class, id_spec, active, legals, id_group, id_realm, avatar_forum) VALUES('Airouche', 'Meidi', '1988-11-13', 'update@test.fr', 'uNnXXu939f00JTSF/3CG0A==', 'Update', 1, 1, 1, 1, 1, 1, 1, '/resources/img/default_avatar.png');
+INSERT INTO users (name, surname, birth, mail, password, nickname, id_race, id_class, id_spec, active, legals, id_group, id_realm, avatar_forum) VALUES('Airouche', 'Meidi', '1988-11-13', 'mednnet@wanadoo.fr', 'uNnXXu939f00JTSF/3CG0A==', 'XtremZ', 3, 1, 2, 1, 1, 1, 1, '/resources/img/default_avatar.png');
+INSERT INTO users (name, surname, birth, mail, password, nickname, id_race, id_class, id_spec, active, legals, id_group, id_realm, avatar_forum) VALUES('Airouche', 'Meidi', '1988-11-13', 'inactive@test.fr', 'uNnXXu939f00JTSF/3CG0A==', 'Inactive', 4, 3, 1, 1, 1, 1, 1, '/resources/img/default_avatar.png');
+INSERT INTO users (name, surname, birth, mail, password, nickname, id_race, id_class, id_spec, active, legals, id_group, id_realm, avatar_forum) VALUES('Airouche', 'Meidi', '1988-11-13', 'update@test.fr', 'uNnXXu939f00JTSF/3CG0A==', 'Update', 3, 1, 4, 1, 1, 1, 1, '/resources/img/default_avatar.png');
 -----------------------------------------------------------------------------
 
 -- Class : ForumDao ---------------------------------------------------------

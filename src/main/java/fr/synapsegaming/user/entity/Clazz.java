@@ -1,6 +1,7 @@
 package fr.synapsegaming.user.entity;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,7 +46,7 @@ public class Clazz {
     @Column(name = "img")
     private String img;
 
-    /**
+	/**
      * Match races for a class
      */
     @OneToMany(mappedBy = "clazz")
@@ -62,9 +63,9 @@ public class Clazz {
     /**
      * Users playing this class
      */
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_class")
-    private List<User> users;
+    private Set<User> users;
 
     public long getId() {
         return id;
@@ -98,11 +99,11 @@ public class Clazz {
         this.raceClasses = raceClasses;
     }
 
-    public List<User> getUsers() {
+    public Set<User> getUsers() {
         return users;
     }
 
-    public void setUsers(List<User> users) {
+    public void setUsers(Set<User> users) {
         this.users = users;
     }
 
