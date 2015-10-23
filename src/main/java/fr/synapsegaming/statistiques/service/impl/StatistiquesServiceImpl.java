@@ -8,15 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.synapsegaming.statistiques.service.StatistiquesService;
-import fr.synapsegaming.statistiques.vo.ClazzMostPlayedVO;
-import fr.synapsegaming.statistiques.vo.RaceMostPlayedVO;
+import fr.synapsegaming.statistiques.vo.ObjectMostPlayedVO;
 import fr.synapsegaming.user.dao.ClazzDao;
 import fr.synapsegaming.user.dao.RaceDao;
 import fr.synapsegaming.user.dao.UserDao;
 import fr.synapsegaming.user.entity.Clazz;
 import fr.synapsegaming.user.entity.Race;
+
 @Service("StatistiquesService")
-public class StatistiquesServiceImpl implements StatistiquesService{
+public class StatistiquesServiceImpl implements StatistiquesService {
 
 	@Autowired
 	ClazzDao clazzDao;
@@ -28,29 +28,26 @@ public class StatistiquesServiceImpl implements StatistiquesService{
 	RaceDao raceDao;
 
 	@Override
-	public List<ClazzMostPlayedVO> listFiveClassesMostPlayed() {
-		List<Clazz> classes = clazzDao.list(Clazz.class);
-		List<ClazzMostPlayedVO> classesMostPlayed = new ArrayList<ClazzMostPlayedVO>();
+	public List<ObjectMostPlayedVO> listFiveObjectsMostPlayed(String object) {
+		List<ObjectMostPlayedVO> classesMostPlayed = new ArrayList<ObjectMostPlayedVO>();
 
-		for(Clazz clazz:classes) {
-			classesMostPlayed.add(new ClazzMostPlayedVO(clazz.getName(), clazz.getUsers().size()));
+		if (object == "Classes") {
+			List<Clazz> classes = clazzDao.list(Clazz.class);
+
+			for (Clazz clazz : classes) {
+				classesMostPlayed.add(new ObjectMostPlayedVO(clazz.getName(), clazz.getUsers().size()));
+			}
+		}
+		if (object == "Races") {
+			List<Race> races = raceDao.list(Race.class);
+
+			for (Race race : races) {
+				classesMostPlayed.add(new ObjectMostPlayedVO(race.getName(), race.getUsers().size()));
+			}
 		}
 
 		Collections.sort(classesMostPlayed);
 		return classesMostPlayed.subList(0, 5);
 
-	}
-
-	@Override
-	public List<RaceMostPlayedVO> listFiveRacesMostPlayed() {
-		List<Race> races = raceDao.list(Race.class);
-		List<RaceMostPlayedVO> classesMostPlayed = new ArrayList<RaceMostPlayedVO>();
-
-		for(Race clazz:races) {
-			classesMostPlayed.add(new RaceMostPlayedVO(clazz.getName(), clazz.getUsers().size()));
-		}
-
-		Collections.sort(classesMostPlayed);
-		return classesMostPlayed.subList(0, 5);
 	}
 }
