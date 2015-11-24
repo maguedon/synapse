@@ -22,6 +22,10 @@ public class StatistiquesServiceTest extends AbstractServiceTest  {
 	private static final String FOURTH_RACE = "Gobelin";
 	private static final String FIFTH_RACE = "Tauren";
 	
+	private static final String FIRST_SPECIAL = "Combat";
+	private static final String SECOND_SPECIAL = "Assassinat";
+	private static final String THIRD_SPECIAL = "Finesse";
+	
 	@Autowired
 	StatistiquesService statistiquesService;
 	
@@ -98,4 +102,31 @@ public class StatistiquesServiceTest extends AbstractServiceTest  {
 	public void testFirstRaceNumberMostPlayed() {
 		assertTrue(statistiquesService.listFiveObjectsMostPlayed("Races").get(0).getNbUsers() == 2);
 	}
+	
+	// ---- Spécialisations 
+	
+		@Test
+		public void testListFiveSpecializationMostPlayedHasFiveRecordsMax() {
+			assertTrue(statistiquesService.listFiveObjectsMostPlayed("Specializations").size() <= 5);
+		}
+		
+		@Test
+		public void testFirstSpecializationMostPlayed() {
+			assertEquals(statistiquesService.listFiveObjectsMostPlayed("Specializations").get(0).getName(), FIRST_SPECIAL);
+		}
+		
+		@Test
+		public void testSecondSpecializationMostPlayed() {
+			assertEquals(statistiquesService.listFiveObjectsMostPlayed("Specializations").get(1).getName(), SECOND_SPECIAL);
+		}
+
+		@Test
+		public void testThirdSpecializationMostPlayed() {
+			assertEquals(statistiquesService.listFiveObjectsMostPlayed("Specializations").get(2).getName(), THIRD_SPECIAL);
+		}
+
+		@Test
+		public void testFirstSpecializationNumberMostPlayed() {
+			assertEquals(statistiquesService.listFiveObjectsMostPlayed("Specializations").get(0).getNbUsers(), 3);
+		}
 }

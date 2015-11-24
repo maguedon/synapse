@@ -22,5 +22,4 @@ public interface SpecializationDao extends Dao<Specialization, Long> {
      * @return a list of Specializations
      */
     public List<Specialization> listSpecsForClass(long idClass);
-
 }
