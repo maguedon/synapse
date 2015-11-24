@@ -48,16 +48,21 @@
 				<h3>Top 5 des classes les plus utilisées</h3>
 				<div>
 					<c:forEach items="${fiveClassesMostPlayed}" var="clazz">
-							<div>${clazz.name}</div>
-							<div>${clazz.nbUsers}</div>
+							<div>${clazz.name} (${clazz.nbUsers})</div>
 					</c:forEach>
 				</div>
 				
 				<h3>Top 5 des races les plus utilisées</h3>
 				<div>
 					<c:forEach items="${fiveRacesMostPlayed}" var="race">
-							<div>${race.name}</div>
-							<div>${race.nbUsers}</div>
+							<div>${race.name} (${race.nbUsers})</div>
+					</c:forEach>
+				</div>
+				
+				<h3>Top 5 des spécialisations les plus utilisées</h3>
+				<div>
+					<c:forEach items="${fiveSpecMostPlayed}" var="spec">
+							<div>${spec.name} (${spec.nbUsers})</div>
 					</c:forEach>
 				</div>
 			</div>
