@@ -106,6 +106,14 @@ INSERT INTO f_categories (name, description, id_forum) VALUES('Apply', 'Pour nou
 INSERT INTO f_categories (name, description, id_forum) VALUES('Postulation Acceptée', 'Votre candidature est validée', 1);
 -- ForumPost Insertion
 INSERT INTO f_posts (title, content, date_create, date_update, id_user_update, id_user, id_cat, locked) VALUES('Title1', 'Content1', '2015-01-06 14:16:24', '2015-01-06 14:16:24', 1, 1, 1, 1);
+
+INSERT INTO f_replies(content, date_create, id_user, id_post) VALUES('Fonction edit corrigée :)', '2015-01-08 01:17:04', 1, 1);
+INSERT INTO f_replies(content, date_create, id_user, id_post) VALUES('<img src="http://sd.keepcalm-o-matic.co.uk/i/omg-r...', '2015-01-08 01:17:04', 2, 1);
+INSERT INTO f_replies(content, date_create, id_user, id_post) VALUES('Toujours aussi rapide ! :p', '2015-01-08 01:17:04', 1, 1);
+INSERT INTO f_replies(content, date_create, id_user, id_post) VALUES('Comment on édit du coup ? XD (je vois plus de bout...', '2015-01-08 01:17:04', 3, 1);
+INSERT INTO f_replies(content, date_create, id_user, id_post) VALUES('Le bouton dure 1h c est écrit quand tu poste :)', '2015-01-08 01:17:04', 1, 1);
+INSERT INTO f_replies(content, date_create, id_user, id_post) VALUES('D accord, c est pour ça. :D', '2015-01-08 01:17:04', 3, 1);
+					
 -----------------------------------------------------------------------------
 
 -- Class : RaidDao -----------------------------------------------------------

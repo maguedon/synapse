@@ -162,9 +162,9 @@ public class User {
     /**
      * The list of replies in the forum
      */
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_user")
-    private List<ForumReply> replies;
+    private Set<ForumReply> replies;
 
     /**
      * The list of events where the user has subscribed
@@ -320,11 +320,11 @@ public class User {
         this.posts = posts;
     }
 
-    public List<ForumReply> getReplies() {
+    public Set<ForumReply> getReplies() {
         return replies;
     }
 
-    public void setReplies(List<ForumReply> replies) {
+    public void setReplies(Set<ForumReply> replies) {
         this.replies = replies;
     }
 

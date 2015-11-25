@@ -26,6 +26,10 @@ public class StatistiquesServiceTest extends AbstractServiceTest  {
 	private static final String SECOND_SPECIAL = "Assassinat";
 	private static final String THIRD_SPECIAL = "Finesse";
 	
+	private static final String FIRST_USER = "Squash";
+	private static final String SECOND_USER = "Inactive";
+	private static final String THIRD_USER = "XtremZ";
+	
 	@Autowired
 	StatistiquesService statistiquesService;
 	
@@ -105,28 +109,50 @@ public class StatistiquesServiceTest extends AbstractServiceTest  {
 	
 	// ---- Spécialisations 
 	
+	@Test
+	public void testListFiveSpecializationMostPlayedHasFiveRecordsMax() {
+		assertTrue(statistiquesService.listFiveObjectsMostPlayed("Specializations").size() <= 5);
+	}
+	
+	@Test
+	public void testFirstSpecializationMostPlayed() {
+		assertEquals(statistiquesService.listFiveObjectsMostPlayed("Specializations").get(0).getName(), FIRST_SPECIAL);
+	}
+	
+	@Test
+	public void testSecondSpecializationMostPlayed() {
+		assertEquals(statistiquesService.listFiveObjectsMostPlayed("Specializations").get(1).getName(), SECOND_SPECIAL);
+	}
+
+	@Test
+	public void testThirdSpecializationMostPlayed() {
+		assertEquals(statistiquesService.listFiveObjectsMostPlayed("Specializations").get(2).getName(), THIRD_SPECIAL);
+	}
+
+	@Test
+	public void testFirstSpecializationNumberMostPlayed() {
+		assertEquals(statistiquesService.listFiveObjectsMostPlayed("Specializations").get(0).getNbUsers(), 3);
+	}
+	
+	// ---- Actifs 
+	
 		@Test
-		public void testListFiveSpecializationMostPlayedHasFiveRecordsMax() {
-			assertTrue(statistiquesService.listFiveObjectsMostPlayed("Specializations").size() <= 5);
+		public void testListFivePlayersMostActiveHasFiveRecordsMax() {
+			assertTrue(statistiquesService.listUsersMostActive().size() <= 5);
 		}
 		
 		@Test
-		public void testFirstSpecializationMostPlayed() {
-			assertEquals(statistiquesService.listFiveObjectsMostPlayed("Specializations").get(0).getName(), FIRST_SPECIAL);
+		public void testFirstPlayerMostActive() {
+			assertEquals(statistiquesService.listUsersMostActive().get(0).getName(), FIRST_USER);
 		}
 		
 		@Test
-		public void testSecondSpecializationMostPlayed() {
-			assertEquals(statistiquesService.listFiveObjectsMostPlayed("Specializations").get(1).getName(), SECOND_SPECIAL);
+		public void testSecondPlayerMostActive() {
+			assertEquals(statistiquesService.listUsersMostActive().get(1).getName(), SECOND_USER);
 		}
 
 		@Test
-		public void testThirdSpecializationMostPlayed() {
-			assertEquals(statistiquesService.listFiveObjectsMostPlayed("Specializations").get(2).getName(), THIRD_SPECIAL);
-		}
-
-		@Test
-		public void testFirstSpecializationNumberMostPlayed() {
-			assertEquals(statistiquesService.listFiveObjectsMostPlayed("Specializations").get(0).getNbUsers(), 3);
+		public void testThirdPlayerMostActive() {
+			assertEquals(statistiquesService.listUsersMostActive().get(2).getName(), THIRD_USER);
 		}
 }

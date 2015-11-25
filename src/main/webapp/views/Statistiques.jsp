@@ -65,6 +65,13 @@
 							<div>${spec.name} (${spec.nbUsers})</div>
 					</c:forEach>
 				</div>
+				
+				<h3>Top 5 des utilisateurs les plus actifs</h3>
+				<div>
+					<c:forEach items="${fiveUsersMostActive}" var="user">
+							<div>${user.name} (${user.nbReplies})</div>
+					</c:forEach>
+				</div>
 			</div>
 		</div>
 	</div>

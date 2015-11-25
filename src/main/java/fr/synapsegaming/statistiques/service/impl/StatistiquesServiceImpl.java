@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import fr.synapsegaming.statistiques.service.StatistiquesService;
 import fr.synapsegaming.statistiques.vo.ObjectMostPlayedVO;
+import fr.synapsegaming.statistiques.vo.UserMostActiveVO;
 import fr.synapsegaming.user.dao.ClazzDao;
 import fr.synapsegaming.user.dao.RaceDao;
 import fr.synapsegaming.user.dao.SpecializationDao;
@@ -16,6 +17,7 @@ import fr.synapsegaming.user.dao.UserDao;
 import fr.synapsegaming.user.entity.Clazz;
 import fr.synapsegaming.user.entity.Race;
 import fr.synapsegaming.user.entity.Specialization;
+import fr.synapsegaming.user.entity.User;
 
 @Service("StatistiquesService")
 public class StatistiquesServiceImpl implements StatistiquesService {
@@ -62,7 +64,6 @@ public class StatistiquesServiceImpl implements StatistiquesService {
 					if(objectsMostPlayed.get(i).getName().equals(specialization.getName())){
 						objectsMostPlayed.get(i).setNbUsers(objectsMostPlayed.get(i).getNbUsers() + specialization.getUsers().size());
 						found = true;
-						System.out.println("found");
 					}
 					i++;
 				}
@@ -77,5 +78,21 @@ public class StatistiquesServiceImpl implements StatistiquesService {
 			return objectsMostPlayed.subList(0, 5);
 		return objectsMostPlayed;
 
+	}
+
+	@Override
+	public List<UserMostActiveVO> listUsersMostActive() {
+		List<UserMostActiveVO> usersMostActive = new ArrayList<UserMostActiveVO>();
+
+		List<User> users = userDao.list(User.class);
+
+		for (User user : users) {
+			usersMostActive.add(new UserMostActiveVO(user.getNickname(), user.getReplies().size()));
+		}
+		
+		Collections.sort(usersMostActive);
+		if(usersMostActive.size() > 5)
+			return usersMostActive.subList(0, 5);
+		return usersMostActive;
 	}
 }
