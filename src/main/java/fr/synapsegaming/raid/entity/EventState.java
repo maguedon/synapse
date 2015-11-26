@@ -1,6 +1,7 @@
 package fr.synapsegaming.raid.entity;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,9 +43,9 @@ public class EventState {
     /**
      * The list of events for this state
      */
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_event")
-    private List<Event> events;
+    private Set<Event> events;
 
     public long getId() {
         return id;
@@ -62,11 +63,11 @@ public class EventState {
         this.name = name;
     }
 
-    public List<Event> getEvents() {
+    public Set<Event> getEvents() {
         return events;
     }
 
-    public void setEvents(List<Event> events) {
+    public void setEvents(Set<Event> events) {
         this.events = events;
     }
 

@@ -1,7 +1,6 @@
 package fr.synapsegaming.user.entity;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -94,7 +93,7 @@ public class User {
     /**
      * The list of articles of a User
      */
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_user")
     private Set<Article> articles;
 
@@ -155,9 +154,9 @@ public class User {
     /**
      * The list of posts in the forum
      */
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_post")
-    private List<ForumPost> posts;
+    private Set<ForumPost> posts;
 
     /**
      * The list of replies in the forum
@@ -196,9 +195,9 @@ public class User {
     /**
      * The list of posts updated in the forum
      */
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_post")
-    private List<ForumPost> updatedPosts;
+    private Set<ForumPost> updatedPosts;
 
     public long getId() {
         return id;
@@ -312,11 +311,11 @@ public class User {
         this.group = group;
     }
 
-    public List<ForumPost> getPosts() {
+    public Set<ForumPost> getPosts() {
         return posts;
     }
 
-    public void setPosts(List<ForumPost> posts) {
+    public void setPosts(Set<ForumPost> posts) {
         this.posts = posts;
     }
 
@@ -352,11 +351,11 @@ public class User {
         this.forumAvatar = forumAvatar;
     }
 
-    public List<ForumPost> getUpdatedPosts() {
+    public Set<ForumPost> getUpdatedPosts() {
         return updatedPosts;
     }
 
-    public void setUpdatedPosts(List<ForumPost> updatedPosts) {
+    public void setUpdatedPosts(Set<ForumPost> updatedPosts) {
         this.updatedPosts = updatedPosts;
     }
 

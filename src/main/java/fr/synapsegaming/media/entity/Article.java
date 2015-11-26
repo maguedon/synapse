@@ -2,6 +2,7 @@ package fr.synapsegaming.media.entity;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -83,7 +84,7 @@ public class Article {
     /**
      * The type of article : news, blog...
      */
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_article_type")
     private ArticleType type;
 
@@ -110,7 +111,7 @@ public class Article {
      */
     @ManyToMany
     @JoinTable(name = "groups_articles", joinColumns = @JoinColumn(name = "id_article"), inverseJoinColumns = @JoinColumn(name = "id_group"))
-    private List<Group> groups;
+    private Set<Group> groups;
 
     public long getId() {
         return id;
@@ -200,11 +201,11 @@ public class Article {
         this.imageHeader = imageHeader;
     }
 
-    public List<Group> getGroups() {
+    public Set<Group> getGroups() {
         return groups;
     }
 
-    public void setGroups(List<Group> groups) {
+    public void setGroups(Set<Group> groups) {
         this.groups = groups;
     }
 

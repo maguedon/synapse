@@ -1,6 +1,5 @@
 package fr.synapsegaming.user.entity;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -50,15 +49,15 @@ public class Clazz {
      * Match races for a class
      */
     @OneToMany(mappedBy = "clazz")
-    private List<RaceClass> raceClasses;
+    private Set<RaceClass> raceClasses;
 
     /**
-     * The list of specs which can be played by the Class
+     * The Set of specs which can be played by the Class
      */
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_class")
     @Valid
-    private List<Specialization> specs;
+    private Set<Specialization> specs;
 
     /**
      * Users playing this class
@@ -83,19 +82,19 @@ public class Clazz {
         this.name = name;
     }
 
-    public List<Specialization> getSpecs() {
+    public Set<Specialization> getSpecs() {
         return specs;
     }
 
-    public void setSpecs(List<Specialization> specs) {
+    public void setSpecs(Set<Specialization> specs) {
         this.specs = specs;
     }
 
-    public List<RaceClass> getRaceClasses() {
+    public Set<RaceClass> getRaceClasses() {
         return raceClasses;
     }
 
-    public void setRaceClasses(List<RaceClass> raceClasses) {
+    public void setRaceClasses(Set<RaceClass> raceClasses) {
         this.raceClasses = raceClasses;
     }
 

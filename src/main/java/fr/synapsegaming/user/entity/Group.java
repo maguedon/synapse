@@ -1,6 +1,7 @@
 package fr.synapsegaming.user.entity;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,20 +43,20 @@ public class Group {
     /**
      * The list of resources for this group
      */
-    @ManyToMany(mappedBy = "groups", fetch = FetchType.LAZY)
-    private List<Resource> resources;
+    @ManyToMany(mappedBy = "groups", fetch = FetchType.EAGER)
+    private Set<Resource> resources;
 
     /**
      * The list of articles for this group
      */
-    @ManyToMany(mappedBy = "groups", fetch = FetchType.LAZY)
-    private List<Article> articles;
+    @ManyToMany(mappedBy = "groups", fetch = FetchType.EAGER)
+    private Set<Article> articles;
 
     /**
      * The list of forums for this group
      */
-    @ManyToMany(mappedBy = "groups", fetch = FetchType.LAZY)
-    private List<Forum> forums;
+    @ManyToMany(mappedBy = "groups", fetch = FetchType.EAGER)
+    private Set<Forum> forums;
 
     public Group() {
 
@@ -81,27 +82,27 @@ public class Group {
         this.name = name;
     }
 
-    public List<Resource> getResources() {
+    public Set<Resource> getResources() {
         return resources;
     }
 
-    public void setResources(List<Resource> resources) {
+    public void setResources(Set<Resource> resources) {
         this.resources = resources;
     }
 
-    public List<Article> getArticles() {
+    public Set<Article> getArticles() {
         return articles;
     }
 
-    public void setArticles(List<Article> articles) {
+    public void setArticles(Set<Article> articles) {
         this.articles = articles;
     }
 
-    public List<Forum> getForums() {
+    public Set<Forum> getForums() {
         return forums;
     }
 
-    public void setForums(List<Forum> forums) {
+    public void setForums(Set<Forum> forums) {
         this.forums = forums;
     }
 

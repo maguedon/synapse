@@ -41,7 +41,7 @@ public class ArticleType {
     /**
      * The list of articles from a type
      */
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_article_type")
     private Set<Article> articles;
 
