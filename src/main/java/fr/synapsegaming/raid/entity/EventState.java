@@ -43,9 +43,9 @@ public class EventState {
     /**
      * The list of events for this state
      */
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_event")
-    private Set<Event> events;
+    private List<Event> events;
 
     public long getId() {
         return id;
@@ -63,11 +63,11 @@ public class EventState {
         this.name = name;
     }
 
-    public Set<Event> getEvents() {
+    public List<Event> getEvents() {
         return events;
     }
 
-    public void setEvents(Set<Event> events) {
+    public void setEvents(List<Event> events) {
         this.events = events;
     }
 

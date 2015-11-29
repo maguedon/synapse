@@ -43,20 +43,20 @@ public class Group {
     /**
      * The list of resources for this group
      */
-    @ManyToMany(mappedBy = "groups", fetch = FetchType.EAGER)
-    private Set<Resource> resources;
+    @ManyToMany(mappedBy = "groups", fetch = FetchType.LAZY)
+    private List<Resource> resources;
 
     /**
      * The list of articles for this group
      */
-    @ManyToMany(mappedBy = "groups", fetch = FetchType.EAGER)
-    private Set<Article> articles;
+    @ManyToMany(mappedBy = "groups", fetch = FetchType.LAZY)
+    private List<Article> articles;
 
     /**
      * The list of forums for this group
      */
-    @ManyToMany(mappedBy = "groups", fetch = FetchType.EAGER)
-    private Set<Forum> forums;
+    @ManyToMany(mappedBy = "groups", fetch = FetchType.LAZY)
+    private List<Forum> forums;
 
     public Group() {
 
@@ -82,27 +82,27 @@ public class Group {
         this.name = name;
     }
 
-    public Set<Resource> getResources() {
+    public List<Resource> getResources() {
         return resources;
     }
 
-    public void setResources(Set<Resource> resources) {
+    public void setResources(List<Resource> resources) {
         this.resources = resources;
     }
 
-    public Set<Article> getArticles() {
+    public List<Article> getArticles() {
         return articles;
     }
 
-    public void setArticles(Set<Article> articles) {
+    public void setArticles(List<Article> articles) {
         this.articles = articles;
     }
 
-    public Set<Forum> getForums() {
+    public List<Forum> getForums() {
         return forums;
     }
 
-    public void setForums(Set<Forum> forums) {
+    public void setForums(List<Forum> forums) {
         this.forums = forums;
     }
 

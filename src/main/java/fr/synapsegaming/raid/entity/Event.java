@@ -82,7 +82,7 @@ public class Event {
     /**
      * The author of the event
      */
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user")
     @NotNull
     private User creator;
