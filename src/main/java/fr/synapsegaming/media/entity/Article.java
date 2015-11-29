@@ -2,7 +2,6 @@ package fr.synapsegaming.media.entity;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
