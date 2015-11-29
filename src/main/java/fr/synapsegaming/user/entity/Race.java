@@ -48,9 +48,9 @@ public class Race {
     /**
      * Users playing this race
      */
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_race")
-    private Set<User> users;
+    private List<User> users;
 
     public long getId() {
         return id;
@@ -76,11 +76,11 @@ public class Race {
         this.raceClasses = raceClasses;
     }
 
-    public Set<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<User> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 
