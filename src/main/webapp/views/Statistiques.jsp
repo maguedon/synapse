@@ -45,35 +45,58 @@
 	<div id="stat-wrapper">
 		<div id="stat-container">
 			<div id="stat">
-				<h3>Top 5 des classes les plus utilisées</h3>
+				<br>
+				<div class="news-title">
+					Top 5 des classes les plus utilisées
+				</div>
 				<div>
 					<c:forEach items="${fiveClassesMostPlayed}" var="clazz">
-						<div>${clazz.name}, (${clazz.nbUsers})</div>
+						<div>${clazz.name}</div>
 					</c:forEach>
 				</div>
 				
-				<h3>Top 5 des races les plus utilisées</h3>
+				<br>
+				<div class="news-title">
+					Top 5 des races les plus utilisées
+				</div>
 				<div>
 					<c:forEach items="${fiveRacesMostPlayed}" var="race">
-						<div>${race.name}, (${race.nbUsers})</div>
+						<div>${race.name} (${race.nbUsers})</div>
 					</c:forEach>
 				</div>
 				
-				<h3>Top 5 des utilisateurs les plus actifs</h3>
+				<br>
+				<div class="news-title">
+					Top 5 des spécialisations les plus jouées
+				</div>
+				<div>
+					<c:forEach items="${fiveSpecMostPlayed}" var="spec">
+						<div>${spec.name} (${spec.nbUsers})</div>
+					</c:forEach>
+				</div>
+				
+				<br>
+				<div class="news-title">
+					Top 5 des utilisateurs les plus actifs
+				</div>
 				<div>
 					<c:forEach items="${fiveUsersMostActive}" var="user">
 						<div>${user.name} (${user.nbReplies})</div>
 					</c:forEach>
 				</div>
 				
-				<h3>Utilisateurs sans avatars</h3>
+				<br>
+				<div class="news-title">
+					Liste des utilisateurs sans avatar
+				</div>
 				<div>
 					<p>
 						<c:forEach items="${usersWithNoAvatar}" var="user">
-							${user}, 
+							${user}. 
 						</c:forEach>
 					</p>
 				</div>
+				<br>
 			</div>
 		</div>
 	</div>
