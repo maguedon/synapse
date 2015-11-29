@@ -65,7 +65,7 @@ public class Patch {
     /**
      * The Extension where the patch is from
      */
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_extension")
     private Extension extension;
 

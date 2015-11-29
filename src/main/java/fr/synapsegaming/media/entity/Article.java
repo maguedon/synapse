@@ -84,7 +84,7 @@ public class Article {
     /**
      * The type of article : news, blog...
      */
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_article_type")
     private ArticleType type;
 
@@ -111,7 +111,7 @@ public class Article {
      */
     @ManyToMany
     @JoinTable(name = "groups_articles", joinColumns = @JoinColumn(name = "id_article"), inverseJoinColumns = @JoinColumn(name = "id_group"))
-    private Set<Group> groups;
+    private List<Group> groups;
 
     public long getId() {
         return id;
@@ -201,11 +201,11 @@ public class Article {
         this.imageHeader = imageHeader;
     }
 
-    public Set<Group> getGroups() {
+    public List<Group> getGroups() {
         return groups;
     }
 
-    public void setGroups(Set<Group> groups) {
+    public void setGroups(List<Group> groups) {
         this.groups = groups;
     }
 

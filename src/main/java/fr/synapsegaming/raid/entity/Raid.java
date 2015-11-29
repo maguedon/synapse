@@ -50,7 +50,7 @@ public class Raid {
     /**
      * The Patch where the raid is from
      */
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_patch")
     private Patch patch;
 
@@ -65,9 +65,9 @@ public class Raid {
     /**
      * The list of events for this raid
      */
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_raid")
-    private Set<Event> events;
+    private List<Event> events;
 
     public long getId() {
         return id;
@@ -109,11 +109,11 @@ public class Raid {
         this.achievements = achievements;
     }
 
-    public Set<Event> getEvents() {
+    public List<Event> getEvents() {
         return events;
     }
 
-    public void setEvents(Set<Event> events) {
+    public void setEvents(List<Event> events) {
         this.events = events;
     }
 
