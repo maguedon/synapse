@@ -48,24 +48,31 @@
 				<h3>Top 5 des classes les plus utilisées</h3>
 				<div>
 					<c:forEach items="${fiveClassesMostPlayed}" var="clazz">
-							<div>${clazz.name}</div>
-							<div>${clazz.nbUsers}</div>
+						<div>${clazz.name}, (${clazz.nbUsers})</div>
 					</c:forEach>
 				</div>
 				
 				<h3>Top 5 des races les plus utilisées</h3>
 				<div>
 					<c:forEach items="${fiveRacesMostPlayed}" var="race">
-							<div>${race.name}</div>
-							<div>${race.nbUsers}</div>
+						<div>${race.name}, (${race.nbUsers})</div>
 					</c:forEach>
 				</div>
 				
 				<h3>Top 5 des utilisateurs les plus actifs</h3>
 				<div>
 					<c:forEach items="${fiveUsersMostActive}" var="user">
-							<div>${user.name} (${user.nbReplies})</div>
+						<div>${user.name} (${user.nbReplies})</div>
 					</c:forEach>
+				</div>
+				
+				<h3>Utilisateurs sans avatars</h3>
+				<div>
+					<p>
+						<c:forEach items="${usersWithNoAvatar}" var="user">
+							${user}, 
+						</c:forEach>
+					</p>
 				</div>
 			</div>
 		</div>

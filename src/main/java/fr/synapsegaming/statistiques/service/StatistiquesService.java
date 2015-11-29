@@ -17,4 +17,5 @@ public interface StatistiquesService {
 
 	List<UserMostActiveVO> listUsersMostActive();
 
+	List<String> listUsersWithNoAvatar();
 }

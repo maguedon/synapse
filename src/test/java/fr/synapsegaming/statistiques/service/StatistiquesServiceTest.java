@@ -29,6 +29,12 @@ public class StatistiquesServiceTest extends AbstractServiceTest  {
 	private static final String FIRST_USER = "Squash";
 	private static final String SECOND_USER = "Inactive";
 	private static final String THIRD_USER = "XtremZ";
+
+	private static final int USER_WITH_NO_AVATAR_EXPECTED = 4;
+	private static final String FIRST_USER_NO_AVATAR = "Squash";
+	private static final String SECOND_USER_NO_AVATAR = "XtremZ";
+	private static final String THIRD_USER_NO_AVATAR = "Inactive";
+	private static final String FOURTH_USER_NO_AVATAR = "Update";
 	
 	@Autowired
 	StatistiquesService statistiquesService;
@@ -136,23 +142,50 @@ public class StatistiquesServiceTest extends AbstractServiceTest  {
 	
 	// ---- Actifs 
 	
-		@Test
-		public void testListFivePlayersMostActiveHasFiveRecordsMax() {
-			assertTrue(statistiquesService.listUsersMostActive().size() <= 5);
-		}
-		
-		@Test
-		public void testFirstPlayerMostActive() {
-			assertEquals(statistiquesService.listUsersMostActive().get(0).getName(), FIRST_USER);
-		}
-		
-		@Test
-		public void testSecondPlayerMostActive() {
-			assertEquals(statistiquesService.listUsersMostActive().get(1).getName(), SECOND_USER);
-		}
+	@Test
+	public void testListFivePlayersMostActiveHasFiveRecordsMax() {
+		assertTrue(statistiquesService.listUsersMostActive().size() <= 5);
+	}
+	
+	@Test
+	public void testFirstPlayerMostActive() {
+		assertEquals(statistiquesService.listUsersMostActive().get(0).getName(), FIRST_USER);
+	}
+	
+	@Test
+	public void testSecondPlayerMostActive() {
+		assertEquals(statistiquesService.listUsersMostActive().get(1).getName(), SECOND_USER);
+	}
 
-		@Test
-		public void testThirdPlayerMostActive() {
-			assertEquals(statistiquesService.listUsersMostActive().get(2).getName(), THIRD_USER);
-		}
+	@Test
+	public void testThirdPlayerMostActive() {
+		assertEquals(statistiquesService.listUsersMostActive().get(2).getName(), THIRD_USER);
+	}
+	
+	// ---- Avatars
+	
+	@Test
+	public void testListNumberUserWithNoAvatar() {
+		assertTrue(statistiquesService.listUsersWithNoAvatar().size() == USER_WITH_NO_AVATAR_EXPECTED);
+	}
+
+	@Test
+	public void testFirstPlayerWithNoAvatar() {
+		assertEquals(statistiquesService.listUsersWithNoAvatar().get(0), FIRST_USER_NO_AVATAR);
+	}
+
+	@Test
+	public void testSecondPlayerWithNoAvatar() {
+		assertEquals(statistiquesService.listUsersWithNoAvatar().get(1), SECOND_USER_NO_AVATAR);
+	}
+
+	@Test
+	public void testThirdPlayerWithNoAvatar() {
+		assertEquals(statistiquesService.listUsersWithNoAvatar().get(2), THIRD_USER_NO_AVATAR);
+	}
+
+	@Test
+	public void testFourthPlayerWithNoAvatar() {
+		assertEquals(statistiquesService.listUsersWithNoAvatar().get(3), FOURTH_USER_NO_AVATAR);
+	}
 }

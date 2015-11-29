@@ -99,4 +99,19 @@ public class StatistiquesServiceImpl implements StatistiquesService {
 			return usersMostActive.subList(0, 5);
 		return usersMostActive;
 	}
+
+	@Override
+	public List<String> listUsersWithNoAvatar(){
+		List<String> usersWithNoAvatar = new ArrayList<String>();
+
+		List<User> users = userDao.list(User.class);
+
+		for (User user : users) {
+			if(user.getForumAvatar().contains("/resources/img/default_avatar.png")) {
+				usersWithNoAvatar.add(user.getNickname());
+			}
+		}
+		
+		return usersWithNoAvatar;
+	}
 }
