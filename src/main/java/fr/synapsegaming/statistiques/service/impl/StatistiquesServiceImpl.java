@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import fr.synapsegaming.social.dao.ForumReplyDao;
 import fr.synapsegaming.statistiques.service.StatistiquesService;
 import fr.synapsegaming.statistiques.vo.ObjectMostPlayedVO;
 import fr.synapsegaming.statistiques.vo.UserMostActiveVO;
@@ -33,6 +34,9 @@ public class StatistiquesServiceImpl implements StatistiquesService {
 	
 	@Autowired
 	SpecializationDao specialDao;
+	
+	@Autowired
+	ForumReplyDao forumReplyDao;
 
 	@Override
 	public List<ObjectMostPlayedVO> listFiveObjectsMostPlayed(String object) {
@@ -42,14 +46,14 @@ public class StatistiquesServiceImpl implements StatistiquesService {
 			List<Clazz> classes = clazzDao.list(Clazz.class);
 
 			for (Clazz clazz : classes) {
-				objectsMostPlayed.add(new ObjectMostPlayedVO(clazz.getName(), clazz.getUsers().size()));
+				objectsMostPlayed.add(new ObjectMostPlayedVO(clazz.getName(), userDao.listUsersForClass(clazz.getId()).size()));
 			}
 		}
 		if (object == "Races") {
 			List<Race> races = raceDao.list(Race.class);
 
 			for (Race race : races) {
-				objectsMostPlayed.add(new ObjectMostPlayedVO(race.getName(), race.getUsers().size()));
+				objectsMostPlayed.add(new ObjectMostPlayedVO(race.getName(), userDao.listUsersForRace(race.getId()).size()));
 			}
 		}
 		if (object == "Specializations") {
@@ -62,14 +66,14 @@ public class StatistiquesServiceImpl implements StatistiquesService {
 				boolean found = false;
 				while(i<objectsMostPlayed.size() && !found){
 					if(objectsMostPlayed.get(i).getName().equals(specialization.getName())){
-						objectsMostPlayed.get(i).setNbUsers(objectsMostPlayed.get(i).getNbUsers() + specialization.getUsers().size());
+						objectsMostPlayed.get(i).setNbUsers(objectsMostPlayed.get(i).getNbUsers() + userDao.listUsersForSpec(specialization.getId()).size());
 						found = true;
 					}
 					i++;
 				}
 				//Sinon, on ajoute une nouvelle specialization à la liste
 				if(!found)
-					objectsMostPlayed.add(new ObjectMostPlayedVO(specialization.getName(), specialization.getUsers().size()));
+					objectsMostPlayed.add(new ObjectMostPlayedVO(specialization.getName(), userDao.listUsersForSpec(specialization.getId()).size()));
 			}
 		}
 
@@ -87,7 +91,7 @@ public class StatistiquesServiceImpl implements StatistiquesService {
 		List<User> users = userDao.list(User.class);
 
 		for (User user : users) {
-			usersMostActive.add(new UserMostActiveVO(user.getNickname(), user.getReplies().size()));
+			usersMostActive.add(new UserMostActiveVO(user.getNickname(), forumReplyDao.listRepliesForUser(user.getId()).size()));
 		}
 		
 		Collections.sort(usersMostActive);

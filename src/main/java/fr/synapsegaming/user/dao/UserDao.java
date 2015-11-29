@@ -33,4 +33,8 @@ public interface UserDao extends Dao<User, Long> {
 
     public List<User> listUsersForClass(long idClass);
 
+	public List<User> listUsersForSpec(long idSpec);
+
+	public List<User> listUsersForRace(long idRace);
+
 }

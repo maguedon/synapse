@@ -1,5 +1,6 @@
 package fr.synapsegaming.user.entity;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -59,9 +60,9 @@ public class Specialization {
     /**
      * Users playing this specs
      */
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_spec")
-    private Set<User> users;
+    private List<User> users;
 
     /**
      * Roles for this spec
@@ -102,11 +103,11 @@ public class Specialization {
         this.img = img;
     }
 
-    public Set<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<User> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 

@@ -1,7 +1,6 @@
 package fr.synapsegaming.user.entity;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,9 +33,9 @@ public class Role {
     /**
      * Specs of the Role
      */
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_role")
-    private Set<Specialization> specializations;
+    private List<Specialization> specializations;
 
     public long getId() {
         return id;
@@ -54,11 +53,11 @@ public class Role {
         this.name = name;
     }
 
-    public Set<Specialization> getSpecializations() {
+    public List<Specialization> getSpecializations() {
         return specializations;
     }
 
-    public void setSpecializations(Set<Specialization> specializations) {
+    public void setSpecializations(List<Specialization> specializations) {
         this.specializations = specializations;
     }
 

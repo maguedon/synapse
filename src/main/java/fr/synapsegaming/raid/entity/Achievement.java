@@ -42,7 +42,7 @@ public class Achievement {
     @Column(name = "date_down")
     private Date dateDown;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_raid")
     private Raid raid;
 

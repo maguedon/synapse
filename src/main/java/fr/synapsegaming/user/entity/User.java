@@ -1,6 +1,7 @@
 package fr.synapsegaming.user.entity;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -154,16 +155,16 @@ public class User {
     /**
      * The list of posts in the forum
      */
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_post")
-    private Set<ForumPost> posts;
+    private List<ForumPost> posts;
 
     /**
      * The list of replies in the forum
      */
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user")
-    private Set<ForumReply> replies;
+    private List<ForumReply> replies;
 
     /**
      * The list of events where the user has subscribed
@@ -195,9 +196,9 @@ public class User {
     /**
      * The list of posts updated in the forum
      */
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_post")
-    private Set<ForumPost> updatedPosts;
+    private List<ForumPost> updatedPosts;
 
     public long getId() {
         return id;
@@ -311,19 +312,19 @@ public class User {
         this.group = group;
     }
 
-    public Set<ForumPost> getPosts() {
+    public List<ForumPost> getPosts() {
         return posts;
     }
 
-    public void setPosts(Set<ForumPost> posts) {
+    public void setPosts(List<ForumPost> posts) {
         this.posts = posts;
     }
 
-    public Set<ForumReply> getReplies() {
+    public List<ForumReply> getReplies() {
         return replies;
     }
 
-    public void setReplies(Set<ForumReply> replies) {
+    public void setReplies(List<ForumReply> replies) {
         this.replies = replies;
     }
 
@@ -351,11 +352,11 @@ public class User {
         this.forumAvatar = forumAvatar;
     }
 
-    public Set<ForumPost> getUpdatedPosts() {
+    public List<ForumPost> getUpdatedPosts() {
         return updatedPosts;
     }
 
-    public void setUpdatedPosts(Set<ForumPost> updatedPosts) {
+    public void setUpdatedPosts(List<ForumPost> updatedPosts) {
         this.updatedPosts = updatedPosts;
     }
 
