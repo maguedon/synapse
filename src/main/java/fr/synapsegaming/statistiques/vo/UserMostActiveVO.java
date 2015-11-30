@@ -1,26 +1,12 @@
 package fr.synapsegaming.statistiques.vo;
 
-public class UserMostActiveVO implements Comparable<UserMostActiveVO>{
-	
-	private String name;
+public class UserMostActiveVO extends FiveMostVO<UserMostActiveVO> {
 	
 	private Integer nbReplies;
 
 	public UserMostActiveVO(String name, Integer nbReplies) {
-		this.name = name;
+		super(name);
 		this.nbReplies = nbReplies;
-	}
-
-	public UserMostActiveVO() {
-		
-	}
-	
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public int getNbReplies() {

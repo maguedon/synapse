@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import fr.synapsegaming.social.dao.ForumReplyDao;
 import fr.synapsegaming.statistiques.service.StatistiquesService;
-import fr.synapsegaming.statistiques.vo.ObjectMostPlayedVO;
+import fr.synapsegaming.statistiques.vo.ClazzMostPlayedVO;
+import fr.synapsegaming.statistiques.vo.RaceMostPlayedVO;
+import fr.synapsegaming.statistiques.vo.SpecMostPlayedVO;
 import fr.synapsegaming.statistiques.vo.UserMostActiveVO;
 import fr.synapsegaming.user.dao.ClazzDao;
 import fr.synapsegaming.user.dao.RaceDao;
@@ -24,64 +26,70 @@ import fr.synapsegaming.user.entity.User;
 public class StatistiquesServiceImpl implements StatistiquesService {
 
 	@Autowired
-	ClazzDao clazzDao;
-
+	private RaceDao raceDao;
 	@Autowired
-	UserDao userDao;
-
+	private UserDao userDao;
 	@Autowired
-	RaceDao raceDao;
-	
+	private ClazzDao clazzDao;
 	@Autowired
-	SpecializationDao specialDao;
-	
+	private SpecializationDao specDao;
 	@Autowired
-	ForumReplyDao forumReplyDao;
+	private ForumReplyDao forumReplyDao;
 
 	@Override
-	public List<ObjectMostPlayedVO> listFiveObjectsMostPlayed(String object) {
-		List<ObjectMostPlayedVO> objectsMostPlayed = new ArrayList<ObjectMostPlayedVO>();
+	public List<RaceMostPlayedVO> listFiveRaceMostPlayed() {
+		List<RaceMostPlayedVO> raceMostPlayed = new ArrayList<RaceMostPlayedVO>();
+		List<Race> races = raceDao.list(Race.class);
 
-		if (object == "Classes") {
-			List<Clazz> classes = clazzDao.list(Clazz.class);
-
-			for (Clazz clazz : classes) {
-				objectsMostPlayed.add(new ObjectMostPlayedVO(clazz.getName(), userDao.listUsersForClass(clazz.getId()).size()));
-			}
+		for (Race race : races) {
+			raceMostPlayed.add(new RaceMostPlayedVO(race.getName(), userDao.listUsersForRace(race.getId()).size()));
 		}
-		if (object == "Races") {
-			List<Race> races = raceDao.list(Race.class);
+		
+		Collections.sort(raceMostPlayed);
+		if(raceMostPlayed.size() > 5)
+			return raceMostPlayed.subList(0, 5);
+		return raceMostPlayed;
+	}
 
-			for (Race race : races) {
-				objectsMostPlayed.add(new ObjectMostPlayedVO(race.getName(), userDao.listUsersForRace(race.getId()).size()));
-			}
+	@Override
+	public List<ClazzMostPlayedVO> listFiveClazzMostPlayed() {
+		List<ClazzMostPlayedVO> clazzMostPlayed = new ArrayList<ClazzMostPlayedVO>();
+		List<Clazz> classes = clazzDao.list(Clazz.class);
+
+		for (Clazz clazz : classes) {
+			clazzMostPlayed.add(new ClazzMostPlayedVO(clazz.getName(), userDao.listUsersForClass(clazz.getId()).size()));
 		}
-		if (object == "Specializations") {
-			List<Specialization> specializations = specialDao.list(Specialization.class);
-			
-			for (Specialization specialization : specializations) {
-				// S'il y a déjà une specialization du même nom, 
-				// on ajoute juste son nombre d'utilisateurs
-				int i=0;
-				boolean found = false;
-				while(i<objectsMostPlayed.size() && !found){
-					if(objectsMostPlayed.get(i).getName().equals(specialization.getName())){
-						objectsMostPlayed.get(i).setNbUsers(objectsMostPlayed.get(i).getNbUsers() + userDao.listUsersForSpec(specialization.getId()).size());
-						found = true;
-					}
-					i++;
+		Collections.sort(clazzMostPlayed);
+		if(clazzMostPlayed.size() > 5)
+			return clazzMostPlayed.subList(0, 5);
+		return clazzMostPlayed;
+	}
+
+	@Override
+	public List<SpecMostPlayedVO> listFiveSpecMostPlayed() {
+		List<SpecMostPlayedVO> specMostPlayed = new ArrayList<SpecMostPlayedVO>();
+		List<Specialization> specializations = specDao.list(Specialization.class);
+		
+		for (Specialization specialization : specializations) {
+			// S'il y a déjà une specialization du même nom, 
+			// on ajoute juste son nombre d'utilisateurs
+			int i=0;
+			boolean found = false;
+			while(i<specMostPlayed.size() && !found){
+				if(specMostPlayed.get(i).getName().equals(specialization.getName())){
+					specMostPlayed.get(i).setNbUsers(specMostPlayed.get(i).getNbUsers() + userDao.listUsersForSpec(specialization.getId()).size());
+					found = true;
 				}
-				//Sinon, on ajoute une nouvelle specialization à la liste
-				if(!found)
-					objectsMostPlayed.add(new ObjectMostPlayedVO(specialization.getName(), userDao.listUsersForSpec(specialization.getId()).size()));
+				i++;
 			}
+			//Sinon, on ajoute une nouvelle specialization à la liste
+			if(!found)
+				specMostPlayed.add(new SpecMostPlayedVO(specialization.getName(), userDao.listUsersForSpec(specialization.getId()).size()));
 		}
-
-		Collections.sort(objectsMostPlayed);
-		if(objectsMostPlayed.size() > 5)
-			return objectsMostPlayed.subList(0, 5);
-		return objectsMostPlayed;
-
+		Collections.sort(specMostPlayed);
+		if(specMostPlayed.size() > 5)
+			return specMostPlayed.subList(0, 5);
+		return specMostPlayed;
 	}
 
 	@Override
@@ -101,7 +109,7 @@ public class StatistiquesServiceImpl implements StatistiquesService {
 	}
 
 	@Override
-	public List<String> listUsersWithNoAvatar(){
+	public List<String> listUsersWithNoAvatar() {
 		List<String> usersWithNoAvatar = new ArrayList<String>();
 
 		List<User> users = userDao.list(User.class);

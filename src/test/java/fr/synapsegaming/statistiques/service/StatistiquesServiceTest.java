@@ -43,101 +43,101 @@ public class StatistiquesServiceTest extends AbstractServiceTest  {
 
 	@Test
 	public void testListFiveClassesMostPlayedHasFiveRecords() {
-		assertTrue(statistiquesService.listFiveObjectsMostPlayed("Classes").size() == RECORD_NUMBER_EXPECTED);
+		assertTrue(statistiquesService.listFiveClazzMostPlayed().size() == RECORD_NUMBER_EXPECTED);
 	}
 	
 	@Test
 	public void testFirstClasseMostPlayed() {
-		assertEquals(statistiquesService.listFiveObjectsMostPlayed("Classes").get(0).getName(), FIRST_CLASS);
+		assertEquals(statistiquesService.listFiveClazzMostPlayed().get(0).getName(), FIRST_CLASS);
 	}
 	
 	@Test
 	public void testSecondClasseMostPlayed() {
-		assertEquals(statistiquesService.listFiveObjectsMostPlayed("Classes").get(1).getName(), SECOND_CLASS);
+		assertEquals(statistiquesService.listFiveClazzMostPlayed().get(1).getName(), SECOND_CLASS);
 	}
 
 	@Test
 	public void testThirdClasseMostPlayed() {
-		assertEquals(statistiquesService.listFiveObjectsMostPlayed("Classes").get(2).getName(), THIRD_CLASS);
+		assertEquals(statistiquesService.listFiveClazzMostPlayed().get(2).getName(), THIRD_CLASS);
 	}
 
 	@Test
 	public void testFourthClasseMostPlayed() {
-		assertEquals(statistiquesService.listFiveObjectsMostPlayed("Classes").get(3).getName(), FOURTH_CLASS);
+		assertEquals(statistiquesService.listFiveClazzMostPlayed().get(3).getName(), FOURTH_CLASS);
 	}
 
 	@Test
 	public void testFifthClasseMostPlayed() {
-		assertEquals(statistiquesService.listFiveObjectsMostPlayed("Classes").get(4).getName(), FIFTH_CLASS);
+		assertEquals(statistiquesService.listFiveClazzMostPlayed().get(4).getName(), FIFTH_CLASS);
 	}
 
 	@Test
 	public void testFirstClasseNumberMostPlayed() {
-		assertTrue(statistiquesService.listFiveObjectsMostPlayed("Classes").get(0).getNbUsers() == 3);
+		assertTrue(statistiquesService.listFiveClazzMostPlayed().get(0).getNbUsers() == 3);
 	}
 	
 	// ---- Races
 
 	@Test
 	public void testListFiveRaceMostPlayedHasFiveRecords() {
-		assertTrue(statistiquesService.listFiveObjectsMostPlayed("Races").size() == RECORD_NUMBER_EXPECTED);
+		assertTrue(statistiquesService.listFiveRaceMostPlayed().size() == RECORD_NUMBER_EXPECTED);
 	}
 	
 	@Test
 	public void testFirstRaceMostPlayed() {
-		assertEquals(statistiquesService.listFiveObjectsMostPlayed("Races").get(0).getName(), FIRST_RACE);
+		assertEquals(statistiquesService.listFiveRaceMostPlayed().get(0).getName(), FIRST_RACE);
 	}
 	
 	@Test
 	public void testSecondRaceMostPlayed() {
-		assertEquals(statistiquesService.listFiveObjectsMostPlayed("Races").get(1).getName(), SECOND_RACE);
+		assertEquals(statistiquesService.listFiveRaceMostPlayed().get(1).getName(), SECOND_RACE);
 	}
 
 	@Test
 	public void testThirdRaceMostPlayed() {
-		assertEquals(statistiquesService.listFiveObjectsMostPlayed("Races").get(2).getName(), THIRD_RACE);
+		assertEquals(statistiquesService.listFiveRaceMostPlayed().get(2).getName(), THIRD_RACE);
 	}
 
 	@Test
 	public void testFourthRaceMostPlayed() {
-		assertEquals(statistiquesService.listFiveObjectsMostPlayed("Races").get(3).getName(), FOURTH_RACE);
+		assertEquals(statistiquesService.listFiveRaceMostPlayed().get(3).getName(), FOURTH_RACE);
 	}
 
 	@Test
 	public void testFifthRaceMostPlayed() {
-		assertEquals(statistiquesService.listFiveObjectsMostPlayed("Races").get(4).getName(), FIFTH_RACE);
+		assertEquals(statistiquesService.listFiveRaceMostPlayed().get(4).getName(), FIFTH_RACE);
 	}
 
 	@Test
 	public void testFirstRaceNumberMostPlayed() {
-		assertTrue(statistiquesService.listFiveObjectsMostPlayed("Races").get(0).getNbUsers() == 2);
+		assertTrue(statistiquesService.listFiveRaceMostPlayed().get(0).getNbUsers() == 2);
 	}
 	
 	// ---- Spécialisations 
 	
 	@Test
 	public void testListFiveSpecializationMostPlayedHasFiveRecordsMax() {
-		assertTrue(statistiquesService.listFiveObjectsMostPlayed("Specializations").size() <= 5);
+		assertTrue(statistiquesService.listFiveSpecMostPlayed().size() <= 5);
 	}
 	
 	@Test
 	public void testFirstSpecializationMostPlayed() {
-		assertEquals(statistiquesService.listFiveObjectsMostPlayed("Specializations").get(0).getName(), FIRST_SPECIAL);
+		assertEquals(statistiquesService.listFiveSpecMostPlayed().get(0).getName(), FIRST_SPECIAL);
 	}
 	
 	@Test
 	public void testSecondSpecializationMostPlayed() {
-		assertEquals(statistiquesService.listFiveObjectsMostPlayed("Specializations").get(1).getName(), SECOND_SPECIAL);
+		assertEquals(statistiquesService.listFiveSpecMostPlayed().get(1).getName(), SECOND_SPECIAL);
 	}
 
 	@Test
 	public void testThirdSpecializationMostPlayed() {
-		assertEquals(statistiquesService.listFiveObjectsMostPlayed("Specializations").get(2).getName(), THIRD_SPECIAL);
+		assertEquals(statistiquesService.listFiveSpecMostPlayed().get(2).getName(), THIRD_SPECIAL);
 	}
 
 	@Test
 	public void testFirstSpecializationNumberMostPlayed() {
-		assertEquals(statistiquesService.listFiveObjectsMostPlayed("Specializations").get(0).getNbUsers(), 3);
+		assertTrue(statistiquesService.listFiveSpecMostPlayed().get(0).getNbUsers() == 3);
 	}
 	
 	// ---- Actifs 

@@ -46,9 +46,9 @@ public class StatistiquesController extends AbstractController {
         page.setViewName("Statistiques");
         page.addObject("resources", resourceService.listMainMenu());
         page.addObject("proms", articleService.getFiveLastProms());
-        page.addObject("fiveClassesMostPlayed", statistiquesService.listFiveObjectsMostPlayed("Classes"));
-        page.addObject("fiveRacesMostPlayed", statistiquesService.listFiveObjectsMostPlayed("Races"));
-        page.addObject("fiveSpecMostPlayed", statistiquesService.listFiveObjectsMostPlayed("Specializations"));
+        page.addObject("fiveClassesMostPlayed", statistiquesService.listFiveClazzMostPlayed());
+        page.addObject("fiveRacesMostPlayed", statistiquesService.listFiveRaceMostPlayed());
+        page.addObject("fiveSpecMostPlayed", statistiquesService.listFiveSpecMostPlayed());
         page.addObject("fiveUsersMostActive", statistiquesService.listUsersMostActive());
         page.addObject("usersWithNoAvatar", statistiquesService.listUsersWithNoAvatar());
 
