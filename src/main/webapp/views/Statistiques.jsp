@@ -51,7 +51,7 @@
 				</div>
 				<div>
 					<c:forEach items="${fiveClassesMostPlayed}" var="clazz">
-						<div>${clazz.name}</div>
+						<div>${clazz.name} (${clazz.nbUsers})</div>
 					</c:forEach>
 				</div>
 				

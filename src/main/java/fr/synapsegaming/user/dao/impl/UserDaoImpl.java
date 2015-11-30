@@ -58,7 +58,7 @@ public class UserDaoImpl extends AbstractDao<User, Long> implements UserDao {
         Session session = this.getSession();
         try {
             Query query = session
-                    .createQuery("from User u join fetch u.class c where c.id = :idClass");
+                    .createQuery("from User u join fetch u.clazz c where c.id = :idClass");
             query.setParameter("idClass", idClass);
             return query.list();
         } catch (Exception e) {
