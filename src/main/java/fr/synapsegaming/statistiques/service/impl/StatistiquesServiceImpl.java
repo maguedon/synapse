@@ -23,7 +23,7 @@ import fr.synapsegaming.user.entity.Specialization;
 import fr.synapsegaming.user.entity.User;
 
 @Service("StatistiquesService")
-public class StatistiquesServiceImpl implements StatistiquesService {
+public class StatistiquesServiceImpl<T> implements StatistiquesService {
 
 	@Autowired
 	private RaceDao raceDao;
@@ -35,7 +35,7 @@ public class StatistiquesServiceImpl implements StatistiquesService {
 	private SpecializationDao specDao;
 	@Autowired
 	private ForumReplyDao forumReplyDao;
-
+	
 	@Override
 	public List<RaceMostPlayedVO> listFiveRaceMostPlayed() {
 		List<RaceMostPlayedVO> raceMostPlayed = new ArrayList<RaceMostPlayedVO>();
